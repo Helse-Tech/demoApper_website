@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  padding: 1rem;
+
+  background-color: #fbf9fa;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow: hidden;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+  height: 85vh;
+}
+
+.container {
+  max-width: 2000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.Button {
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
+  max-width: 350px;
+}
+
+.saveButton {
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.saveButton2 {
+  max-height: 42px;
+}
+
+.loginBtn {
+  align-self: center;
+}
+
+.legeDiv {
+  margin-top: -3px;
+}
