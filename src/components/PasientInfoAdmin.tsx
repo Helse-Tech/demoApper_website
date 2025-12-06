@@ -1219,7 +1219,9 @@ const PasientInfoAdmin = () => {
             <div className="w-full h-full flex items-center justify-center">
               {/* <ImageIcon className="w-16 h-16 text-gray-400" />
               <p className="text-gray-600 ml-4">Bildeforhåndsvisning</p> */}
-              {imagePreview.images[imagePreview.currentIndex].includes("id") ? (
+              {imagePreview.images[imagePreview.currentIndex]?.includes(
+                "id"
+              ) ? (
                 <img
                   src={imagePreview.images[imagePreview.currentIndex]}
                   className="max-h-full max-w-full object-contain"
