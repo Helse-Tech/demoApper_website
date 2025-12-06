@@ -21,6 +21,24 @@ import qrDemo from "../assets/qrDemoapper.png";
 
 import { Button, Modal, ConfirmModal } from "./Components";
 
+import img1_1 from "../assets/id1img1.png";
+
+import img2_1 from "../assets/id2img1.png";
+import img2_2 from "../assets/id2img2.png";
+
+import img3_1 from "../assets/id3img1.png";
+
+import img7_1 from "../assets/id7img1.png";
+import img7_2 from "../assets/id7img2.png";
+
+import img8_1 from "../assets/id8img1.png";
+
+import img9_1 from "../assets/id9img1.png";
+
+import img14_1 from "../assets/id14img1.png";
+
+import img15_1 from "../assets/id15img1.png";
+
 // =========================================================================
 // --- DATA MODEL ----------------------------------------------------------
 // =========================================================================
@@ -59,54 +77,105 @@ import { Button, Modal, ConfirmModal } from "./Components";
 //   },
 // ];
 
+// const initialPatientInfo = [
+//   {
+//     id: "1",
+//     category: "Fysioterapi",
+//     title: "Brudd eller annen skade i hand og underarm",
+//     images: ["../assets/id1img1.png"],
+//   },
+//   {
+//     id: "2",
+//     category: "Fysioterapi",
+//     title: "Brudd eller annen skade i skulder og arm",
+//     images: ["../assets/id2img1.png", "../assets/id2img2.png"],
+//   },
+//   {
+//     id: "3",
+//     category: "Fysioterapi",
+//     title: "Brudd eller annen skade i albue og underarm",
+//     images: ["../assets/id3img1.png"],
+//   },
+//   {
+//     id: "7",
+//     category: "Brudd/Røntgen",
+//     title: "Informasjon ved ankelskader",
+//     images: ["../assets/id7img1.png", "../assets/id7img2.png"],
+//   },
+//   {
+//     id: "8",
+//     category: "Brudd/Røntgen",
+//     title: "Gode råd til deg som ikke kan tråkke på foten",
+//     images: ["../assets/id8img1.png"],
+//   },
+//   {
+//     id: "9",
+//     category: "Brudd/Røntgen",
+//     title: "Informasjon ved ribbeinsbrudd",
+//     images: ["../assets/id9img1.png"],
+//   },
+//   {
+//     id: "14",
+//     category: "Sårseksjon",
+//     title: "Til deg som har fått sydd eit sår",
+//     images: ["../assets/id14img1.png"],
+//   },
+//   {
+//     id: "15",
+//     category: "Sårseksjon",
+//     title: "LACTACYD mot hudinfeksjon",
+//     images: ["../assets/id15img1.png"],
+//   },
+// ];
+
 const initialPatientInfo = [
   {
     id: "1",
     category: "Fysioterapi",
     title: "Brudd eller annen skade i hand og underarm",
-    images: ["/placeholder-image.png", "/placeholder-image.png"],
+    images: [img1_1],
   },
   {
     id: "2",
     category: "Fysioterapi",
     title: "Brudd eller annen skade i skulder og arm",
-    images: ["/placeholder-image.png"],
+    images: [img2_1, img2_2],
   },
   {
     id: "3",
     category: "Fysioterapi",
     title: "Brudd eller annen skade i albue og underarm",
-    images: ["/placeholder-image.png"],
+    images: [img3_1],
   },
   {
     id: "7",
     category: "Brudd/Røntgen",
     title: "Informasjon ved ankelskader",
-    images: ["/placeholder-image.png", "/placeholder-image.png"],
+    images: [img7_1, img7_2],
   },
   {
     id: "8",
     category: "Brudd/Røntgen",
     title: "Gode råd til deg som ikke kan tråkke på foten",
-    images: ["/placeholder-image.png", "/placeholder-image.png"],
+    images: [img8_1],
   },
   {
     id: "9",
     category: "Brudd/Røntgen",
     title: "Informasjon ved ribbeinsbrudd",
-    images: ["/placeholder-image.png"],
+    images: [img9_1],
   },
   {
     id: "14",
     category: "Sårseksjon",
     title: "Til deg som har fått sydd eit sår",
-    images: ["/placeholder-image.png"],
+    images: [img14_1],
   },
   {
     id: "15",
     category: "Sårseksjon",
     title: "LACTACYD mot hudinfeksjon",
-    images: ["/placeholder-image.png"],
+    images: [img15_1],
   },
 ];
 
@@ -769,7 +838,7 @@ const PasientInfoAdmin = () => {
 
                       {/* Image thumbnails */}
                       <div className="flex gap-2 mt-4">
-                        {item.images.slice(0, 3).map((img, index) => (
+                        {/* {item.images.slice(0, 3).map((img, index) => (
                           <button
                             key={index}
                             onClick={() =>
@@ -792,7 +861,52 @@ const PasientInfoAdmin = () => {
                               <Eye className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                             </div>
                           </button>
+                        ))} */}
+                        {item.images.slice(0, 3).map((img, index) => (
+                          <button
+                            key={index}
+                            onClick={() =>
+                              setImagePreview({
+                                open: true,
+                                images: item.images,
+                                currentIndex: index,
+                              })
+                            }
+                            className="relative w-16 h-16 rounded-lg overflow-hidden border border-gray-200 hover:border-indigo-300 transition-colors group"
+                          >
+                            {/* <div className="w-full h-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                              {img.includes(".pdf") ? (
+                                <File className="w-8 h-8 text-gray-400" />
+                              ) : (
+                                
+                                <img
+                                  src={img}
+                                  alt=""
+                                  className="w-full h-full object-cover"
+                                />
+                              )}
+                            </div> */}
+
+                            <div className="w-full h-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                              {img.includes(".pdf") ? (
+                                <File className="w-8 h-8 text-gray-400" />
+                              ) : img.includes("id") ? (
+                                <img
+                                  src={img}
+                                  alt=""
+                                  className="w-full h-full object-cover"
+                                />
+                              ) : (
+                                <ImageIcon className="w-8 h-8 text-gray-400" />
+                              )}
+                            </div>
+
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                              <Eye className="w-4 h-4 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                            </div>
+                          </button>
                         ))}
+
                         {item.images.length > 3 && (
                           <div className="w-16 h-16 rounded-lg border border-gray-200 flex items-center justify-center text-sm text-gray-500">
                             +{item.images.length - 3}
@@ -1005,15 +1119,42 @@ const PasientInfoAdmin = () => {
             Bilder ({newItem.images.length})
           </label>
           <div className="flex flex-wrap gap-2 mb-3">
-            {newItem.images.map((img, index) => (
+            {/* {newItem.images.map((img, index) => (
               <div key={index} className="relative group">
                 <div className="w-20 h-20 rounded-lg border border-gray-200 overflow-hidden bg-gray-100 flex items-center justify-center">
                   {img.includes(".pdf") ? (
                     <File className="w-8 h-8 text-gray-400" />
                   ) : (
                     <ImageIcon className="w-8 h-8 text-gray-400" />
+            
                   )}
                 </div>
+                <button
+                  onClick={() => {
+                    const newImages = [...newItem.images];
+                    newImages.splice(index, 1);
+                    setNewItem({ ...newItem, images: newImages });
+                  }}
+                  className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <X className="w-3 h-3" />
+                </button>
+              </div>
+            ))} */}
+            {newItem.images.map((img, index) => (
+              <div key={index} className="relative group">
+                <div className="w-20 h-20 rounded-lg border border-gray-200 overflow-hidden bg-gray-100 flex items-center justify-center">
+                  {img.includes("id") ? (
+                    <img
+                      src={img}
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <ImageIcon className="w-8 h-8 text-gray-400" />
+                  )}
+                </div>
+
                 <button
                   onClick={() => {
                     const newImages = [...newItem.images];
@@ -1076,8 +1217,20 @@ const PasientInfoAdmin = () => {
             </div>
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <ImageIcon className="w-16 h-16 text-gray-400" />
-              <p className="text-gray-600 ml-4">Bildeforhåndsvisning</p>
+              {/* <ImageIcon className="w-16 h-16 text-gray-400" />
+              <p className="text-gray-600 ml-4">Bildeforhåndsvisning</p> */}
+              {imagePreview.images[imagePreview.currentIndex].includes("id") ? (
+                <img
+                  src={imagePreview.images[imagePreview.currentIndex]}
+                  className="max-h-full max-w-full object-contain"
+                  alt=""
+                />
+              ) : (
+                <>
+                  <ImageIcon className="w-16 h-16 text-gray-400" />
+                  <p className="text-gray-600 ml-4">Bildeforhåndsvisning</p>
+                </>
+              )}
             </div>
           )}
         </div>

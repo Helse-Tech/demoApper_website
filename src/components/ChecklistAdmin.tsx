@@ -100,7 +100,7 @@ const seedDefaults = () => ({
         },
         {
           id: 1002,
-          text: "Hansker i alle størrelser (S, M, L, XL)",
+          text: "Hansker (S, M, L, XL)",
           done: false,
         },
         {
@@ -121,27 +121,27 @@ const seedDefaults = () => ({
         },
         {
           id: 1007,
-          text: "Klorhexidinsprit – Husk merk med dato",
+          text: "Klorhexidinsprit",
           done: false,
         },
         {
           id: 1008,
-          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin – Husk merk med dato",
+          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin",
           done: false,
         },
         {
           id: 1009,
-          text: "Saltvann 500 ml – Husk merk med dato",
+          text: "Saltvann 500 ml",
           done: false,
         },
         {
           id: 1010,
-          text: "Desinfiser alle overflater (Overflatesprit eller Oxivir wipes) OBS! Riktig wipe til riktig flate",
+          text: "Desinfiser alle overflater",
           done: false,
         },
         {
           id: 1011,
-          text: "Hyller og skuffer – Se hyllekant for innhold",
+          text: "Hyller og skuffer",
           done: false,
         },
       ],
@@ -154,7 +154,7 @@ const seedDefaults = () => ({
       tasks: [
         { id: 1101, text: "Legg frem sterile hansker", done: false },
         { id: 1102, text: "Klargjør sutursett og pinsetter", done: false },
-        { id: 1103, text: "Desinfiser hudområdet (Klorhexidin)", done: false },
+        { id: 1103, text: "Desinfiser hudområdet", done: false },
         { id: 1104, text: "Klargjør Xylocain for bedøvelse", done: false },
         { id: 1105, text: "Risikoavfall klart og tilgjengelig", done: false },
         { id: 1106, text: "Finn sterile kompresser og bandasje", done: false },
@@ -173,8 +173,7 @@ const seedDefaults = () => ({
       tasks: [
         { id: 2001, text: "Mål BT, puls, RF", done: false },
         { id: 2002, text: "Vurder smerte (VAS)", done: false },
-        { id: 2003, text: "Observer bevissthet (GCS/LOC)", done: false },
-        { id: 2004, text: "Sjekk infusjon og væskestatus", done: false },
+        { id: 2003, text: "Observer bevissthet (GCS)", done: false },
         { id: 2005, text: "Dokumenter endringer", done: false },
       ],
     },
@@ -187,7 +186,7 @@ const seedDefaults = () => ({
         { id: 2101, text: "Sjekk kateter og urinproduksjon", done: false },
         {
           id: 2102,
-          text: "Mål temperatur og vurder allmenntilstand",
+          text: "Mål vitalia og vurder allmenntilstand",
           done: false,
         },
         { id: 2103, text: "Snu/trykkavlast pasient ved behov", done: false },
@@ -210,7 +209,6 @@ const seedDefaults = () => ({
       name: "Daglig sjekk – Medisinrom",
       tasks: [
         { id: 3001, text: "Kontroller kjøleskapstemperatur", done: false },
-        { id: 3002, text: "Sjekk utløpsdatoer på injeksjoner", done: false },
         {
           id: 3003,
           text: "Fyll opp sprøyter, kanyler og infusjonsutstyr",
@@ -232,7 +230,7 @@ const seedDefaults = () => ({
       tasks: [
         {
           id: 3101,
-          text: "Full beholdningskontroll av A- og B-preparater",
+          text: "Beholdningskontroll av A- og B-preparater",
           done: false,
         },
         {
@@ -241,7 +239,7 @@ const seedDefaults = () => ({
           done: false,
         },
         { id: 3103, text: "Renhold av skap og hyller", done: false },
-        { id: 3104, text: "Kast utgåtte medisiner etter rutine", done: false },
+        { id: 3104, text: "Kast utgåtte medisiner", done: false },
       ],
     },
   ],
@@ -252,32 +250,32 @@ const seedDefaults = () => ({
       employeeId: 3,
       roomId: 101,
       tasks: [
-        { done: true, id: 1001, text: "Oppkastposer på veg" },
+        { done: true, id: 1001, text: "Oppkastposer på vegg" },
         {
           done: true,
           id: 1002,
-          text: "Hansker i alle størrelser (S, M, L, XL)",
+          text: "Hansker (S, M, L, XL)",
         },
         { done: true, id: 1003, text: "Pasientinfo suturering" },
         { done: true, id: 1004, text: "Risikoavfallsboks" },
         { done: true, id: 1005, text: "Øreprober og spatler" },
         { done: true, id: 1006, text: "Otoskop og oftalmoskop" },
-        { done: true, id: 1007, text: "Klorhexidinsprit – Husk merk med dato" },
+        { done: true, id: 1007, text: "Klorhexidinsprit" },
         {
           done: true,
           id: 1008,
-          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin – Husk merk med dato",
+          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin",
         },
-        { done: true, id: 1009, text: "Saltvann 500 ml – Husk merk med dato" },
+        { done: true, id: 1009, text: "Saltvann 500 ml" },
         {
           done: true,
           id: 1010,
-          text: "Desinfiser alle overflater (Overflatesprit eller Oxivir wipes) OBS! Riktig wipe til riktig flate",
+          text: "Desinfiser alle overflater",
         },
         {
           done: true,
           id: 1011,
-          text: "Hyller og skuffer – Se hyllekant for innhold",
+          text: "Hyller og skuffer",
         },
       ],
       ts: 1765028376084,
