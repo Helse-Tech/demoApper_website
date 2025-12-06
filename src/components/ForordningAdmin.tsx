@@ -99,78 +99,282 @@ const ForordningAdmin = () => {
   // Load mock data on mount
   useEffect(() => {
     // Mock data for demonstration
+    // const mockData = [
+    //   {
+    //     id: "1",
+    //     patient: {
+    //       name: "O.A.",
+    //       dob: "150567",
+    //       room: "101",
+    //       vitalia: { Blodtrykk: "", Puls: "", Temp: "" },
+    //     },
+    //     medications: [
+    //       {
+    //         name: "Paracetamol",
+    //         dose: "1 stk",
+    //         route: "PO",
+    //         strength: "500 mg",
+    //       },
+    //       { name: "Ibuprofen", dose: "1 stk", route: "PO", strength: "400 mg" },
+    //     ],
+    //     doctorSign: "KJ",
+    //     doctorFullName: "Kari Johansen",
+    //     orderDate: "01.12.2024",
+    //     orderTime: "08:30",
+    //     status: "pending",
+    //     timestamp: new Date().toISOString(),
+    //   },
+    //   {
+    //     id: "2",
+    //     patient: {
+    //       name: "K.H.",
+    //       dob: "230889",
+    //       room: "205",
+    //       vitalia: { Puls: "68", SpO2: "98%", Smerte: "3" },
+    //     },
+    //     medications: [
+    //       {
+    //         name: "Morfin",
+    //         dose: "1 ml",
+    //         route: "IV",
+    //         strength: "10 mg/ml",
+    //         volume: "1 ml",
+    //         timeGiven: "01.12.2025 Kl. 15:34",
+    //       },
+    //     ],
+    //     doctorSign: "LT",
+    //     doctorFullName: "Lars Thomassen",
+    //     orderDate: "30.11.2024",
+    //     orderTime: "14:15",
+    //     status: "completed",
+    //     dateGiven: "30.11.2024",
+    //     timeGiven: "15:30",
+    //     nurseSign: "AN",
+    //     nurseFullName: "Anne Nordmann",
+    //     timestamp: new Date(Date.now() - 86400000).toISOString(),
+    //   },
+    //   {
+    //     id: "3",
+    //     patient: {
+    //       name: "P.O.",
+    //       dob: "040195",
+    //       room: "103",
+    //       vitalia: { Blodtrykk: "", Respirasjon: "", Temp: "" },
+    //     },
+    //     medications: [
+    //       { name: "Metoprolol", dose: "1 stk", route: "PO", strength: "50 mg" },
+    //       { name: "Furosemid", dose: "1 stk", route: "PO", strength: "40 mg" },
+    //     ],
+    //     doctorSign: "ME",
+    //     doctorFullName: "Mona Eriksen",
+    //     orderDate: "29.11.2024",
+    //     orderTime: "10:00",
+    //     status: "pending",
+    //     timestamp: new Date(Date.now() - 172800000).toISOString(),
+    //   },
+    // ];
+
     const mockData = [
       {
-        id: "1",
-        patient: {
-          name: "O.A.",
-          dob: "150567",
-          room: "101",
-          vitalia: { Blodtrykk: "", Puls: "", Temp: "" },
-        },
-        medications: [
-          {
-            name: "Paracetamol",
-            dose: "1 stk",
-            route: "PO",
-            strength: "500 mg",
-          },
-          { name: "Ibuprofen", dose: "1 stk", route: "PO", strength: "400 mg" },
-        ],
-        doctorSign: "KJ",
-        doctorFullName: "Kari Johansen",
-        orderDate: "01.12.2024",
-        orderTime: "08:30",
+        id: "task-A1",
         status: "pending",
-        timestamp: new Date().toISOString(),
-      },
-      {
-        id: "2",
+        orderDate: "05.12.2025",
+        orderTime: "13:00",
+        doctorSign: "PDA",
+        doctorFullName: "Peter Alsen",
+        timestamp: "2025-12-05T12:00:00.000Z",
+        nurseSign: "",
+        nurseFullName: "",
         patient: {
-          name: "K.H.",
-          dob: "230889",
-          room: "205",
-          vitalia: { Puls: "68", SpO2: "98%", Smerte: "3" },
+          name: "S.J.",
+          dob: "190382",
+          room: "103",
+          // Endret til true/false: Dette er hva legen har bestilt
+          vitalia: {
+            BT: true,
+            Puls: true,
+            Temp: true,
+            SpO2: false,
+            Resp: false,
+            CRP: true,
+            Glukose: true,
+            Hb: false,
+            Urin: false,
+            HCG: false,
+            "Strep A": false,
+          },
         },
         medications: [
           {
             name: "Morfin",
-            dose: "1 ml",
-            route: "IV",
-            strength: "10 mg/ml",
-            volume: "1 ml",
-            timeGiven: "01.12.2025 Kl. 15:34",
+            dose: "5 mg",
+            route: "I.V.",
+            strength: "1 mg/ml",
+            id: 1764935221550,
+            volume: "",
+          },
+          {
+            name: "Oksygen",
+            dose: "Fri",
+            route: "Inhalasjon",
+            strength: "",
+            id: 1764935221551,
+            volume: "",
+          },
+          {
+            name: "Nitroglycerin",
+            dose: "1 spray",
+            route: "Sublingual",
+            strength: "",
+            id: 1764935221552,
+            volume: "",
+          },
+          {
+            name: "Acetylsalisylsyre (ASA)",
+            dose: "300 mg",
+            route: "PO",
+            strength: "",
+            id: 1764935221553,
+            volume: "",
           },
         ],
-        doctorSign: "LT",
-        doctorFullName: "Lars Thomassen",
-        orderDate: "30.11.2024",
-        orderTime: "14:15",
-        status: "completed",
-        dateGiven: "30.11.2024",
-        timeGiven: "15:30",
-        nurseSign: "AN",
-        nurseFullName: "Anne Nordmann",
-        timestamp: new Date(Date.now() - 86400000).toISOString(),
       },
       {
-        id: "3",
+        id: "task-A3",
+        status: "completed",
+        orderDate: "05.12.2025",
+        orderTime: "13:00",
+        doctorSign: "HHH",
+        doctorFullName: "Hans Hopland",
+        timestamp: "2025-12-05T12:00:00.000Z",
+        nurseSign: "SH",
+        nurseFullName: "Stine Hansen",
+        nurseSignDate: "06.12.2025",
+        nurseSignTime: "13:40",
         patient: {
-          name: "P.O.",
-          dob: "040195",
-          room: "103",
-          vitalia: { Blodtrykk: "", Respirasjon: "", Temp: "" },
+          name: "T.L.",
+          dob: "021191",
+          room: "107",
+          // Endret til true/false: Dette er hva legen har bestilt
+          vitalia: {
+            BT: true,
+            Puls: true,
+            Temp: true,
+            SpO2: false,
+            Resp: false,
+            CRP: true,
+            Glukose: true,
+            Hb: false,
+            Urin: false,
+            HCG: false,
+            "Strep A": false,
+          },
+          reportedVitalia: {
+            BT: {
+              value: "130/85",
+              date: "06.12.2025",
+              time: "13:30",
+            },
+            Puls: {
+              value: "77",
+              date: "06.12.2025",
+              time: "13:31",
+            },
+            Temp: {
+              value: "37.2",
+              date: "06.12.2025",
+              time: "13:32",
+            },
+            CRP: {
+              value: "5",
+              date: "06.12.2025",
+              time: "13:33",
+            },
+            Glukose: {
+              value: "6.1",
+              date: "06.12.2025",
+              time: "13:34",
+            },
+          },
         },
         medications: [
-          { name: "Metoprolol", dose: "1 stk", route: "PO", strength: "50 mg" },
-          { name: "Furosemid", dose: "1 stk", route: "PO", strength: "40 mg" },
+          {
+            name: "Nexium",
+            dose: "40 mg",
+            route: "PO",
+            strength: "",
+            id: 1764935221558,
+            volume: "",
+            administeredDate: "06.12.2025",
+            administeredTime: "13:51",
+          },
+          {
+            name: "Novaluzid",
+            dose: "1 stk",
+            route: "PO",
+            strength: "",
+            id: 1764935221559,
+            volume: "",
+            administeredDate: "06.12.2025",
+            administeredTime: "13:52",
+          },
         ],
-        doctorSign: "ME",
-        doctorFullName: "Mona Eriksen",
-        orderDate: "29.11.2024",
-        orderTime: "10:00",
+      },
+      {
+        id: "task-A2",
         status: "pending",
-        timestamp: new Date(Date.now() - 172800000).toISOString(),
+        orderDate: "05.12.2025",
+        orderTime: "13:00",
+        doctorSign: "HHH",
+        doctorFullName: "Hans Hopland",
+        timestamp: "2025-12-05T12:00:00.000Z",
+        nurseSign: "",
+        nurseFullName: "",
+        patient: {
+          name: "A.S.",
+          dob: "030952",
+          room: "208",
+          // Endret til true/false: Dette er hva legen har bestilt
+          vitalia: {
+            BT: false,
+            Puls: true,
+            Temp: true,
+            SpO2: true,
+            Resp: false,
+            CRP: false,
+            Glukose: false,
+            Hb: false,
+            Urin: true,
+            HCG: false,
+            "Strep A": false,
+          },
+        },
+        medications: [
+          {
+            name: "Adrenalin",
+            dose: "0.5 mg",
+            route: "I.M.",
+            strength: "",
+            id: 1764935221554,
+            volume: "",
+          },
+          {
+            name: "Deksklorfeniramin",
+            dose: "10 mg",
+            route: "I.M.",
+            strength: "",
+            id: 1764935221555,
+            volume: "",
+          },
+          {
+            name: "Solu-cortef",
+            dose: "250 mg",
+            route: "I.M.",
+            strength: "100mg/ml",
+            id: 1764935221556,
+            volume: "",
+          },
+        ],
       },
     ];
 
@@ -288,8 +492,11 @@ const ForordningAdmin = () => {
       medications: meds,
       doctorSign,
       doctorFullName: currentDoc?.name || "Ukjent Lege",
-      orderDate,
-      orderTime,
+      orderDate: new Date().toLocaleDateString("nb-NO"),
+      orderTime: new Date().toLocaleTimeString("nb-NO", {
+        hour: "2-digit",
+        minute: "2-digit",
+      }),
       status: "pending",
       timestamp: new Date().toISOString(),
     };
@@ -840,7 +1047,8 @@ const ForordningAdmin = () => {
         <Button
           variant="success"
           icon={Save}
-          onClick={handleSave}
+          // onClick={handleSave}
+          onClick={confirmSave}
           className="w-full py-3 text-lg shadow-lg shadow-green-200 saveButton"
         >
           Lagre forordning og publiser
@@ -869,18 +1077,23 @@ const ForordningAdmin = () => {
           </span>
           <Button
             variant="danger"
+            // onClick={() => {
+            //   setConfirmModal({
+            //     open: true,
+            //     title: "Tøm arkivet",
+            //     message: `Er du sikker på at du vil tømme arkivet (${completedCount} fullførte forordninger)? Dette kan ikke angres.`,
+            //     onConfirm: () => {
+            //       setPrescriptions(
+            //         prescriptions.filter((p) => p.status === "pending")
+            //       );
+            //       setConfirmModal({ ...confirmModal, open: false });
+            //     },
+            //   });
+            // }}
             onClick={() => {
-              setConfirmModal({
-                open: true,
-                title: "Tøm arkivet",
-                message: `Er du sikker på at du vil tømme arkivet (${completedCount} fullførte forordninger)? Dette kan ikke angres.`,
-                onConfirm: () => {
-                  setPrescriptions(
-                    prescriptions.filter((p) => p.status === "pending")
-                  );
-                  setConfirmModal({ ...confirmModal, open: false });
-                },
-              });
+              setPrescriptions(
+                prescriptions.filter((p) => p.status === "pending")
+              );
             }}
             disabled={completedCount === 0}
           >
@@ -935,33 +1148,47 @@ const ForordningAdmin = () => {
               <div className="p-6">
                 {/* Header */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
-                  <div>
-                    <div className="flex items-center gap-3 mb-2">
-                      <div
-                        className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          prescription.status === "pending"
-                            ? "bg-yellow-100 text-yellow-800"
-                            : "bg-green-100 text-green-800"
-                        }`}
-                      >
-                        {prescription.status === "pending"
-                          ? "VENTENDE"
-                          : "FULLFØRT"}
+                  <div className=" w-full">
+                    <div className="flex items-center mb-4 justify-between">
+                      <div className="flex gap-3">
+                        <div
+                          className={`px-3 py-1 rounded-full text-sm font-medium ${
+                            prescription.status === "pending"
+                              ? "bg-yellow-100 text-yellow-800"
+                              : "bg-green-100 text-green-800"
+                          }`}
+                        >
+                          {prescription.status === "pending"
+                            ? "VENTENDE"
+                            : "FULLFØRT"}
+                        </div>
+                        <div className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">
+                          ROM {prescription.patient.room}
+                        </div>
                       </div>
-                      <div className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm font-medium">
-                        ROM {prescription.patient.room}
+                      <div className="text-right">
+                        <div className="flex items-center justify-end gap-2">
+                          <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600">
+                            {prescription.doctorSign}
+                          </div>
+                          <div>
+                            <div className="font-medium text-gray-900">
+                              {prescription.doctorFullName}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-sm text-gray-500 legeDiv">
+                          Lege
+                        </div>
                       </div>
                     </div>
+
                     <h3 className="text-xl font-bold text-gray-900">
                       {prescription.patient.name}
                     </h3>
-                    <p className="text-gray-500">
-                      Født: {prescription.patient.dob} • Forordnet:{" "}
-                      {prescription.orderDate} kl. {prescription.orderTime}
-                    </p>
-                  </div>
+                    <p className="text-gray-500">{prescription.patient.dob}</p>
 
-                  <div className="text-right">
+                    {/* <div className="text-right">
                     <div className="flex items-center justify-end gap-2">
                       <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center font-bold text-indigo-600">
                         {prescription.doctorSign}
@@ -972,21 +1199,21 @@ const ForordningAdmin = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="text-sm text-gray-500 legeDiv">Lege</div>
+                    <div className="text-sm text-gray-500 legeDiv">Lege</div> */}
                     {prescription.status === "completed" && (
-                      <div className="flex items-center justify-end gap-2 mt-2">
-                        <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600 text-xs">
-                          {prescription.nurseSign}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          Signert: {prescription.dateGiven} kl.{" "}
-                          {prescription.timeGiven}
-                        </div>
-                      </div>
+                      <></>
+                      // <div className="flex items-center justify-end gap-2 mt-2">
+                      //   <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600 text-xs">
+                      //     {prescription.nurseSign}
+                      //   </div>
+                      //   <div className="text-sm text-gray-500">
+                      //     Signert: {prescription.dateGiven} kl.{" "}
+                      //     {prescription.timeGiven}
+                      //   </div>
+                      // </div>
                     )}
                   </div>
                 </div>
-
                 {/* Medications */}
                 <div className="border-t border-gray-100 pt-4 mt-4">
                   <h4 className="font-medium text-gray-700 mb-3">
@@ -1005,24 +1232,23 @@ const ForordningAdmin = () => {
                           <div className="text-sm text-gray-600">
                             {med.dose} • {med.route}
                             {med.strength && ` • ${med.strength}`}
-                            {med.volume && ` • ${med.volume} ml`}
+                            {med.volume && ` • ${med.volume}`}
                           </div>
                         </div>
 
-                        {med.timeGiven && (
+                        {med.administeredDate && (
                           <div
                             style={{ float: "right", textAlign: "right" }}
                             className="text-sm text-gray-600"
                           >
                             <div style={{ fontWeight: 600 }}>Administrert</div>
-                            {med.timeGiven}
+                            {med.administeredDate} kl. {med.administeredTime}
                           </div>
                         )}
                       </div>
                     ))}
                   </div>
                 </div>
-
                 {/* Vitalia */}
                 {Object.keys(prescription.patient.vitalia).filter(
                   (k) => prescription.patient.vitalia[k]
@@ -1046,28 +1272,52 @@ const ForordningAdmin = () => {
                     </button>
                   </div>
                 )}
-
                 {/* Actions */}
-                <div className="border-t border-gray-100 pt-4 mt-4 flex justify-end">
+                <div className="border-t border-gray-100 pt-4 mt-4 flex justify-between bg-red">
+                  {prescription.status === "pending" ? (
+                    <div className="flex items-center justify-end gap-2 mt-2 text-gray-500">
+                      {prescription.orderDate} kl. {prescription.orderTime}
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-end gap-2 mt-2">
+                      <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center font-bold text-green-600 text-xs">
+                        {prescription.nurseSign}
+                      </div>
+                      <div className="font-medium text-gray-900">
+                        {prescription.nurseFullName}
+                      </div>
+                      <div className="text-sm text-gray-500">
+                        {prescription.nurseSignDate} kl.{" "}
+                        {prescription.nurseSignTime}
+                      </div>
+                    </div>
+                  )}
                   {prescription.status === "pending" ? (
                     <div className="flex gap-2">
                       <Button
                         variant="danger"
+                        // onClick={() => {
+                        //   setConfirmModal({
+                        //     open: true,
+                        //     title: "Slett forordning",
+                        //     message:
+                        //       "Er du sikker på at du vil slette denne ventende forordningen?",
+                        //     onConfirm: () => {
+                        //       setPrescriptions(
+                        //         prescriptions.filter(
+                        //           (p) => p.id !== prescription.id
+                        //         )
+                        //       );
+                        //       setConfirmModal({ ...confirmModal, open: false });
+                        //     },
+                        //   });
+                        // }}
                         onClick={() => {
-                          setConfirmModal({
-                            open: true,
-                            title: "Slett forordning",
-                            message:
-                              "Er du sikker på at du vil slette denne ventende forordningen?",
-                            onConfirm: () => {
-                              setPrescriptions(
-                                prescriptions.filter(
-                                  (p) => p.id !== prescription.id
-                                )
-                              );
-                              setConfirmModal({ ...confirmModal, open: false });
-                            },
-                          });
+                          setPrescriptions(
+                            prescriptions.filter(
+                              (p) => p.id !== prescription.id
+                            )
+                          );
                         }}
                       >
                         <Trash2 className="w-4 h-4" />
@@ -1267,25 +1517,59 @@ const ForordningAdmin = () => {
         title={`Vitalia for ${selectedPrescription?.patient.name || ""}`}
       >
         <div className="space-y-4">
-          <p className="text-gray-600">
-            Målt ved forordning ({selectedPrescription?.orderDate} kl.{" "}
-            {selectedPrescription?.orderTime})
-          </p>
-          <div className="grid grid-cols-2 gap-3">
-            {selectedPrescription?.patient.vitalia &&
-              Object.entries(selectedPrescription.patient.vitalia)
-                .filter(([_, value]) => value)
-                .map(([vital, value]) => (
-                  <div key={vital} className="bg-gray-50 rounded-lg p-4">
-                    <div className="text-sm font-medium text-gray-500">
-                      {vital}
-                    </div>
-                    <div className="text-xl font-bold text-gray-900 mt-1">
-                      {value}
-                    </div>
-                  </div>
-                ))}
-          </div>
+          {selectedPrescription?.status === "pending" ? (
+            <>
+              <p className="text-gray-600">Målinger bestilt</p>
+              <div className="grid grid-cols-2 gap-3">
+                {selectedPrescription?.patient.vitalia &&
+                  Object.entries(selectedPrescription.patient.vitalia)
+                    .filter(([_, value]) => value)
+                    .map(([vital, value]) => (
+                      <div key={vital} className="bg-gray-50 rounded-lg p-4">
+                        <div className="text-sm font-medium text-gray-500">
+                          {vital}
+                        </div>
+                        <div className="text-xl font-bold text-gray-900 mt-1">
+                          {value}
+                        </div>
+                      </div>
+                    ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <p className="text-gray-600">Målinger registrert av sykepleier</p>
+              <div className="grid grid-cols-2 gap-3">
+                {selectedPrescription?.patient?.reportedVitalia &&
+                  Object.entries(selectedPrescription.patient.reportedVitalia)
+                    .filter(([_, vitalData]) => vitalData && vitalData.value)
+                    .map(([vitalKey, vitalData]) => (
+                      <div key={vitalKey} className="bg-gray-50 rounded-lg p-4">
+                        {/* Vital name */}
+                        <div className="text-sm font-medium text-gray-700">
+                          {vitalKey}
+                        </div>
+
+                        {/* Value */}
+                        <div className="text-xl font-semibold text-gray-900 mt-2 text-center">
+                          {vitalData.value}
+                        </div>
+
+                        {/* Date */}
+                        <div className="text-xs text-gray-500 mt-4 text-right">
+                          {vitalData.date}
+                        </div>
+
+                        {/* Time */}
+                        <div className="text-xs text-gray-500 -mt-1 text-right">
+                          kl. {vitalData.time}
+                        </div>
+                      </div>
+                    ))}
+              </div>
+            </>
+          )}
+
           <div className="flex justify-end pt-4">
             <Button
               variant="secondary"

@@ -26,35 +26,86 @@ import { Button, Modal, ConfirmModal } from "./Components";
 // =========================================================================
 
 // Initial patient information data
+// const initialPatientInfo = [
+//   {
+//     id: "1",
+//     category: "Generell informasjon",
+//     title: "Hjernerystelse",
+//     images: ["/placeholder-image.png"],
+//   },
+//   {
+//     id: "2",
+//     category: "Generell informasjon",
+//     title: "Sårstell",
+//     images: ["/placeholder-image.png", "/placeholder-image.png"],
+//   },
+//   {
+//     id: "3",
+//     category: "Generell informasjon",
+//     title: "Sting og strips",
+//     images: ["/placeholder-image.png"],
+//   },
+//   {
+//     id: "4",
+//     category: "Generell informasjon",
+//     title: "Smertelindring",
+//     images: ["/placeholder-image.png"],
+//   },
+//   {
+//     id: "5",
+//     category: "Generell informasjon",
+//     title: "Krystallsyke",
+//     images: ["/placeholder-image.png"],
+//   },
+// ];
+
 const initialPatientInfo = [
   {
     id: "1",
-    category: "Generell informasjon",
-    title: "Hjernerystelse",
-    images: ["/placeholder-image.png"],
-  },
-  {
-    id: "2",
-    category: "Generell informasjon",
-    title: "Sårstell",
+    category: "Fysioterapi",
+    title: "Brudd eller annen skade i hand og underarm",
     images: ["/placeholder-image.png", "/placeholder-image.png"],
   },
   {
+    id: "2",
+    category: "Fysioterapi",
+    title: "Brudd eller annen skade i skulder og arm",
+    images: ["/placeholder-image.png"],
+  },
+  {
     id: "3",
-    category: "Generell informasjon",
-    title: "Sting og strips",
+    category: "Fysioterapi",
+    title: "Brudd eller annen skade i albue og underarm",
     images: ["/placeholder-image.png"],
   },
   {
-    id: "4",
-    category: "Generell informasjon",
-    title: "Smertelindring",
+    id: "7",
+    category: "Brudd/Røntgen",
+    title: "Informasjon ved ankelskader",
+    images: ["/placeholder-image.png", "/placeholder-image.png"],
+  },
+  {
+    id: "8",
+    category: "Brudd/Røntgen",
+    title: "Gode råd til deg som ikke kan tråkke på foten",
+    images: ["/placeholder-image.png", "/placeholder-image.png"],
+  },
+  {
+    id: "9",
+    category: "Brudd/Røntgen",
+    title: "Informasjon ved ribbeinsbrudd",
     images: ["/placeholder-image.png"],
   },
   {
-    id: "5",
-    category: "Generell informasjon",
-    title: "Krystallsyke",
+    id: "14",
+    category: "Sårseksjon",
+    title: "Til deg som har fått sydd eit sår",
+    images: ["/placeholder-image.png"],
+  },
+  {
+    id: "15",
+    category: "Sårseksjon",
+    title: "LACTACYD mot hudinfeksjon",
     images: ["/placeholder-image.png"],
   },
 ];
@@ -162,13 +213,13 @@ const PasientInfoAdmin = () => {
 
   // Handle add/edit patient info
   const handleSaveItem = () => {
-    if (!newItem.title || !newItem.category) {
-      setValidationModal({
-        open: true,
-        message: "Vennligst fyll ut tittel og kategori",
-      });
-      return;
-    }
+    // if (!newItem.title || !newItem.category) {
+    //   setValidationModal({
+    //     open: true,
+    //     message: "Vennligst fyll ut tittel og kategori",
+    //   });
+    //   return;
+    // }
 
     if (editModal.isEditing && editModal.currentItem) {
       // Update existing
@@ -701,9 +752,14 @@ const PasientInfoAdmin = () => {
                             <Edit2 className="w-4 h-4" />
                           </button>
                           <button
-                            onClick={() =>
-                              handleDeleteItem(item.id, item.title)
-                            }
+                            // onClick={() =>
+                            //   handleDeleteItem(item.id, item.title)
+                            // }
+                            onClick={() => {
+                              setPatientInfos((prev) =>
+                                prev.filter((info) => info.id !== item.id)
+                              );
+                            }}
                             className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -913,7 +969,7 @@ const PasientInfoAdmin = () => {
       <div className="space-y-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Tittel på skrivet *
+            Tittel på skrivet
           </label>
           <input
             type="text"
@@ -926,7 +982,7 @@ const PasientInfoAdmin = () => {
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Kategori *
+            Kategori
           </label>
           <select
             value={newItem.category}

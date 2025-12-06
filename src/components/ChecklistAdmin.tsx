@@ -16,57 +16,278 @@ import { Button, EditModal, ConfirmModal } from "./Components";
 // --- 2. DATA MODEL -------------------------------------------------------
 // =========================================================================
 
+// const seedDefaults = () => ({
+//   employees: [
+//     { id: 1, initials: "AN", name: "Anne Nordmann" },
+//     { id: 2, initials: "BL", name: "Bjørn Larsen" },
+//   ],
+//   rooms: [
+//     { id: 101, name: "101" },
+//     { id: 102, name: "102" },
+//   ],
+//   checklists: [
+//     {
+//       id: 1,
+//       roomId: 101,
+//       name: "Morgenstell standard",
+//       tasks: [
+//         { id: 1001, text: "Sjekk respirasjon og BT", done: false },
+//         { id: 1002, text: "Gi morgenmedisin PO", done: false },
+//         { id: 1003, text: "Hjelp til toalettbesøk", done: false },
+//       ],
+//     },
+//     {
+//       id: 2,
+//       roomId: 101,
+//       name: "Klargjøring operasjon",
+//       tasks: [
+//         { id: 2001, text: "Fjern smykker", done: false },
+//         { id: 2002, text: "Premedisin", done: false },
+//       ],
+//     },
+//     {
+//       id: 3,
+//       roomId: 102,
+//       name: "Kveldssjekk",
+//       tasks: [
+//         { id: 3001, text: "Sjekk kateter", done: false },
+//         { id: 3002, text: "Rapporter endringer", done: false },
+//       ],
+//     },
+//   ],
+//   signLog: [
+//     {
+//       roomId: 101,
+//       checklistId: 1,
+//       employeeId: 1,
+//       ts: Date.now() - 10000000,
+//       tasks: [
+//         { id: 1001, text: "Sjekk respirasjon og BT", done: true },
+//         { id: 1002, text: "Gi morgenmedisin PO", done: true },
+//       ],
+//     },
+//   ],
+// });
+
 const seedDefaults = () => ({
   employees: [
     { id: 1, initials: "AN", name: "Anne Nordmann" },
     { id: 2, initials: "BL", name: "Bjørn Larsen" },
+    { id: 3, initials: "KH", name: "Kari Hansen" },
   ],
+
   rooms: [
-    { id: 101, name: "101" },
-    { id: 102, name: "102" },
+    { id: 101, name: "Skadestue" },
+    { id: 102, name: "Observasjonsrom" },
+    { id: 103, name: "Medisinrom" },
   ],
+
   checklists: [
+    //
+    // -----------------------------------
+    //  ROOM 101 – SKADESTUE
+    // -----------------------------------
+    //
     {
       id: 1,
       roomId: 101,
-      name: "Morgenstell standard",
+      name: "Daglig sjekkliste – Skadestue",
       tasks: [
-        { id: 1001, text: "Sjekk respirasjon og BT", done: false },
-        { id: 1002, text: "Gi morgenmedisin PO", done: false },
-        { id: 1003, text: "Hjelp til toalettbesøk", done: false },
+        {
+          id: 1001,
+          text: "Oppkastposer på vegg",
+          done: false,
+        },
+        {
+          id: 1002,
+          text: "Hansker i alle størrelser (S, M, L, XL)",
+          done: false,
+        },
+        {
+          id: 1003,
+          text: "Pasientinfo suturering",
+          done: false,
+        },
+        {
+          id: 1004,
+          text: "Risikoavfallsboks",
+          done: false,
+        },
+        { id: 1005, text: "Øreprober og spatler", done: false },
+        {
+          id: 1006,
+          text: "Otoskop og oftalmoskop",
+          done: false,
+        },
+        {
+          id: 1007,
+          text: "Klorhexidinsprit – Husk merk med dato",
+          done: false,
+        },
+        {
+          id: 1008,
+          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin – Husk merk med dato",
+          done: false,
+        },
+        {
+          id: 1009,
+          text: "Saltvann 500 ml – Husk merk med dato",
+          done: false,
+        },
+        {
+          id: 1010,
+          text: "Desinfiser alle overflater (Overflatesprit eller Oxivir wipes) OBS! Riktig wipe til riktig flate",
+          done: false,
+        },
+        {
+          id: 1011,
+          text: "Hyller og skuffer – Se hyllekant for innhold",
+          done: false,
+        },
       ],
     },
+
     {
       id: 2,
       roomId: 101,
-      name: "Klargjøring operasjon",
+      name: "Klargjøring for sutur & sårstell",
       tasks: [
-        { id: 2001, text: "Fjern smykker", done: false },
-        { id: 2002, text: "Premedisin", done: false },
+        { id: 1101, text: "Legg frem sterile hansker", done: false },
+        { id: 1102, text: "Klargjør sutursett og pinsetter", done: false },
+        { id: 1103, text: "Desinfiser hudområdet (Klorhexidin)", done: false },
+        { id: 1104, text: "Klargjør Xylocain for bedøvelse", done: false },
+        { id: 1105, text: "Risikoavfall klart og tilgjengelig", done: false },
+        { id: 1106, text: "Finn sterile kompresser og bandasje", done: false },
       ],
     },
+
+    //
+    // -----------------------------------
+    //  ROOM 102 – OBSERVASJONSROM
+    // -----------------------------------
+    //
     {
       id: 3,
       roomId: 102,
-      name: "Kveldssjekk",
+      name: "Observasjon – hver 2. time",
       tasks: [
-        { id: 3001, text: "Sjekk kateter", done: false },
-        { id: 3002, text: "Rapporter endringer", done: false },
+        { id: 2001, text: "Mål BT, puls, RF", done: false },
+        { id: 2002, text: "Vurder smerte (VAS)", done: false },
+        { id: 2003, text: "Observer bevissthet (GCS/LOC)", done: false },
+        { id: 2004, text: "Sjekk infusjon og væskestatus", done: false },
+        { id: 2005, text: "Dokumenter endringer", done: false },
+      ],
+    },
+
+    {
+      id: 4,
+      roomId: 102,
+      name: "Kveldssjekk – Observasjonsrom",
+      tasks: [
+        { id: 2101, text: "Sjekk kateter og urinproduksjon", done: false },
+        {
+          id: 2102,
+          text: "Mål temperatur og vurder allmenntilstand",
+          done: false,
+        },
+        { id: 2103, text: "Snu/trykkavlast pasient ved behov", done: false },
+        {
+          id: 2104,
+          text: "Rapporter endringer til ansvarlig sykepleier",
+          done: false,
+        },
+      ],
+    },
+
+    //
+    // -----------------------------------
+    //  ROOM 103 – MEDISINROM
+    // -----------------------------------
+    //
+    {
+      id: 5,
+      roomId: 103,
+      name: "Daglig sjekk – Medisinrom",
+      tasks: [
+        { id: 3001, text: "Kontroller kjøleskapstemperatur", done: false },
+        { id: 3002, text: "Sjekk utløpsdatoer på injeksjoner", done: false },
+        {
+          id: 3003,
+          text: "Fyll opp sprøyter, kanyler og infusjonsutstyr",
+          done: false,
+        },
+        { id: 3004, text: "Desinfiser benker og medisinbrett", done: false },
+        {
+          id: 3005,
+          text: "Loggfør temperatur og kontroll i medisinbok",
+          done: false,
+        },
+      ],
+    },
+
+    {
+      id: 6,
+      roomId: 103,
+      name: "Ukentlig kontroll – Medisinrom",
+      tasks: [
+        {
+          id: 3101,
+          text: "Full beholdningskontroll av A- og B-preparater",
+          done: false,
+        },
+        {
+          id: 3102,
+          text: "Sjekk pipetter, infusjonspumper og utstyr",
+          done: false,
+        },
+        { id: 3103, text: "Renhold av skap og hyller", done: false },
+        { id: 3104, text: "Kast utgåtte medisiner etter rutine", done: false },
       ],
     },
   ],
+
   signLog: [
     {
-      roomId: 101,
       checklistId: 1,
-      employeeId: 1,
-      ts: Date.now() - 10000000,
+      employeeId: 3,
+      roomId: 101,
       tasks: [
-        { id: 1001, text: "Sjekk respirasjon og BT", done: true },
-        { id: 1002, text: "Gi morgenmedisin PO", done: true },
+        { done: true, id: 1001, text: "Oppkastposer på veg" },
+        {
+          done: true,
+          id: 1002,
+          text: "Hansker i alle størrelser (S, M, L, XL)",
+        },
+        { done: true, id: 1003, text: "Pasientinfo suturering" },
+        { done: true, id: 1004, text: "Risikoavfallsboks" },
+        { done: true, id: 1005, text: "Øreprober og spatler" },
+        { done: true, id: 1006, text: "Otoskop og oftalmoskop" },
+        { done: true, id: 1007, text: "Klorhexidinsprit – Husk merk med dato" },
+        {
+          done: true,
+          id: 1008,
+          text: "Xylocain 10 mg, Xylocain 20 mg og Xylocain m/adrenalin – Husk merk med dato",
+        },
+        { done: true, id: 1009, text: "Saltvann 500 ml – Husk merk med dato" },
+        {
+          done: true,
+          id: 1010,
+          text: "Desinfiser alle overflater (Overflatesprit eller Oxivir wipes) OBS! Riktig wipe til riktig flate",
+        },
+        {
+          done: true,
+          id: 1011,
+          text: "Hyller og skuffer – Se hyllekant for innhold",
+        },
       ],
+      ts: 1765028376084,
     },
   ],
+
+  // Initial selections
+  currentRoomId: 101,
+  currentChecklistId: 1,
+  currentEmployeeId: 1,
 });
 
 // =========================================================================
@@ -377,7 +598,13 @@ const ChecklistAdmin = () => {
             </div>
             <Button
               variant="ghost"
-              onClick={() => deleteEmployee(e.id)}
+              // onClick={() => deleteEmployee(e.id)}
+              onClick={() => {
+                setData((prev) => ({
+                  ...prev,
+                  employees: prev.employees.filter((emp) => emp.id !== e.id),
+                }));
+              }}
               className="opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600"
             >
               <Trash2 className="w-4 h-4" />
@@ -404,7 +631,16 @@ const ChecklistAdmin = () => {
           >
             <Button
               variant="ghost"
-              onClick={() => deleteRoom(r.id)}
+              // onClick={() => deleteRoom(r.id)}
+              onClick={() => {
+                setData((prev) => ({
+                  ...prev,
+                  rooms: prev.rooms.filter((room) => room.id !== r.id),
+                  checklists: prev.checklists.filter(
+                    (check) => check.roomId !== r.id
+                  ),
+                }));
+              }}
               className="absolute top-1 right-1 opacity-0 group-hover:opacity-100 text-red-400 hover:text-red-600 hover:bg-red-50 p-1 h-auto"
             >
               <Trash2 className="w-3 h-3" />
@@ -488,7 +724,15 @@ const ChecklistAdmin = () => {
               <Button
                 variant="danger"
                 icon={Trash2}
-                onClick={() => deleteChecklist(c.id)}
+                // onClick={() => deleteChecklist(c.id)}
+                onClick={() => {
+                  setData((prev) => ({
+                    ...prev,
+                    checklists: prev.checklists.filter(
+                      (item) => item.id !== c.id
+                    ),
+                  }));
+                }}
                 className="text-xs px-2 py-1 h-8"
               >
                 Slett liste
