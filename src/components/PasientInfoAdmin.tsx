@@ -302,8 +302,8 @@ const PasientInfoAdmin = () => {
     } else {
       // Add new
       const newId = (patientInfos.length + 1).toString();
+
       setPatientInfos((prev) => [
-        ...prev,
         {
           ...newItem,
           id: newId,
@@ -312,6 +312,7 @@ const PasientInfoAdmin = () => {
               ? newItem.images
               : ["/placeholder-image.png"],
         },
+        ...prev, // ← put previous items after the new one
       ]);
     }
 
